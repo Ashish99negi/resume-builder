@@ -1,0 +1,75 @@
+.resume-editor-container {
+  display: flex;
+  gap: 24px;
+}
+
+mat-vertical-stepper {
+  min-width: 200px;
+  background-color: #212d59;
+  color: #ffffff;
+}
+
+::ng-deep  mat-vertical-stepper .mat-step-header.mat-active .mat-step-label {
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+::ng-deep  mat-vertical-stepper .mat-step-label {
+  color: white !important;
+}
+
+::ng-deep  mat-vertical-stepper .mat-step-icon {
+  background-color: white !important;
+  color: #212d59 !important; 
+}
+
+::ng-deep  mat-vertical-stepper .mat-step-icon-state-done {
+  background-color: white !important;
+  color: #212d59 !important;
+}
+
+::ng-deep  mat-vertical-stepper .mat-stepper-horizontal-line,
+mat-vertical-stepper .mat-stepper-vertical-line {
+  border-color: white !important;
+  top: calc(0px - calc((var(--mat-stepper-header-height) + 50px) / 2));
+  bottom: calc(0px - calc((var(--mat-stepper-header-height) + 50px) / 2));
+}
+
+.step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step-buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .mat-stepper-vertical-line::before{
+  background-color: white !important; /* Vertical line color */
+}
+
+/* ::ng-deep .custom-stepper .mat-vertical-stepper-header:not(:last-child)::after {
+  background-color: white !important; 
+} */
+
+::ng-deep .custom-stepper .mat-step-icon {
+  color: white !important;
+  background-color: transparent !important;
+  border: 2px solid white !important;
+}
+
+
+/* ::ng-deep .custom-stepper .mat-vertical-stepper-header {
+  margin-bottom: 40px;
+}
+
+::ng-deep .custom-stepper .mat-vertical-stepper-header:not(:last-child)::before {
+  background-color: white !important;
+  top: 50px; 
+  height: 100%;
+}  */

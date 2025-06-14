@@ -1,0 +1,66 @@
+<div class="add-exp-btn flex justify-center items-center h-[40rem]" *ngIf="experiences.length === 0">
+  <button (click)="openExperienceModal()" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
+    Add Experience
+  </button>
+</div>
+
+<h2 *ngIf="experiences.length > 0" class="text-4xl font-bolder text-center mt-8 mb-4">
+  Review Your Experience
+</h2>
+
+<!-- Saved Experience Cards -->
+<div *ngIf="experiences.length > 0" class="mt-8 space-y-4">
+  <div *ngFor="let exp of experiences" class="relative bg-gray-50 border rounded-xl p-6 shadow-sm transition-all duration-300 overflow-hidden group"
+       [style.maxHeight]="exp.expanded ? '1000px' : '200px'">
+    
+    <!-- Top Row: Title + Icons -->
+    <div class="flex justify-between items-start">
+      <div>
+        <h3 class="text-xl font-semibold">{{ exp.jobTitle }} <span class="text-gray-600 font-normal">|</span> {{ exp.employer }}</h3>
+      </div>
+      <div class="flex space-x-2 text-blue-600">
+        <button (click)="editExperience(exp)">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hover:scale-110 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M11 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+        </button>
+        <button (click)="deleteExperience(exp)">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hover:scale-110 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Location & Dates -->
+    <div class="text-sm text-gray-600 mt-1 flex items-center gap-2">
+      <span>{{ exp.city }}, {{ exp.country }}</span>
+      <span class="mx-2">|</span>
+      <span>{{ exp.startDate | date: 'MMM yyyy' }} - {{ exp.currentlyWorking ? 'Current' : (exp.endDate | date: 'MMM yyyy') }}</span>
+    </div>
+
+    <!-- Description -->
+    <div class="mt-4 prose prose-sm max-w-none text-gray-800"
+         [innerHTML]="exp.description"></div>
+
+    <!-- See More / Less -->
+    <div *ngIf="!exp.expanded" class="absolute bottom-0 right-1.5 h-12 bg-gradient-to-t from-gray-50 to-transparent text-center">
+      <button class="text-blue-600 text-sm mt-4" (click)="exp.expanded = true">See more</button>
+    </div>
+    <div *ngIf="exp.expanded" class="text-right mt-2">
+      <button class="text-blue-600 text-sm" (click)="exp.expanded = false">See less</button>
+    </div>
+  </div>
+</div>
+
+
+  <div *ngIf="experiences.length > 0" class="text-center mt-6">
+    <button (click)="openExperienceModal()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+      Add Experience
+    </button>
+  </div>
+
+
+

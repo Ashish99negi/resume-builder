@@ -1,0 +1,84 @@
+<div class="flex flex-col h-full">
+  <!-- HEADER SECTION -->
+  <div class="mb-10">
+    <h2 class="text-3xl font-bold text-black mb-2">Let’s start with your header</h2>
+    <p class="text-gray-700 text-lg">
+      Include your full name and multiple ways for employers to reach you.
+    </p>
+  </div>
+
+  <!-- FORM SECTION -->
+  <form [formGroup]="form" class="space-y-6 flex-grow">
+    <div class="grid grid-cols-2 gap-6">
+      <!-- First Name -->
+      <div class="w-full">
+        <label class="block text-sm font-semibold text-gray-800 mb-1 uppercase">First Name</label>
+        <input
+          type="text"
+          formControlName="firstName"
+          class="w-full  border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+
+      <!-- Last Name -->
+      <div class="w-full">
+        <label class="block text-sm font-semibold text-gray-800 mb-1 uppercase">Surname</label>
+        <input
+          type="text"
+          formControlName="lastName"
+          class="w-full  border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+
+      <!-- City -->
+      <div class="w-full">
+        <label class="block text-sm font-semibold text-gray-800 mb-1 uppercase">City</label>
+        <input
+          type="text"
+          formControlName="city"
+          class="w-full  border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+
+      <!-- Country -->
+      <div class="w-full">
+        <label class="block text-sm font-semibold text-gray-800 mb-1 uppercase">Country</label>
+        <input
+          type="text"
+          formControlName="country"
+          class="w-full  border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+
+      <!-- Pincode -->
+      <div class="w-full">
+        <label class="block text-sm font-semibold text-gray-800 mb-1 uppercase">Pin Code</label>
+        <input
+          type="text"
+          formControlName="pincode"
+          class="w-full  border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+
+      <!-- Phone -->
+      <div class="w-full">
+        <label class="block text-sm font-semibold text-gray-800 mb-1 uppercase">Phone</label>
+        <input
+          type="text"
+          formControlName="phone"
+          class="w-full  border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="w-full">
+        <label class="block text-sm font-semibold text-gray-800 mb-1 uppercase">Email*</label>
+        <input
+          type="email"
+          formControlName="email"
+          class="w-full  border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+    </div>
+  </form>
+</div>
