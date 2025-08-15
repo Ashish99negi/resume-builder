@@ -36,6 +36,10 @@ export class ExperienceModalComponent {
       description: ['']
     });
 
+    if (this.data) {
+      this.form.patchValue(this.data);
+    }
+
     this.form.get('currentlyWorking')?.valueChanges.subscribe(val => {
       if (val) {
         this.form.get('endDate')?.disable();
@@ -48,7 +52,6 @@ export class ExperienceModalComponent {
   submit() {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);
-      
     } else {
       this.form.markAllAsTouched();
     }

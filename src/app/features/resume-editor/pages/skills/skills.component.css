@@ -1,0 +1,33 @@
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-chip-grid {
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+mat-chip-row {
+  background-color: #e0e0e0 !important;
+  color: #212d59 !important;
+  font-weight: 500;
+}
+
+mat-chip-row .mat-chip-remove {
+  color: #212d59 !important;
+  opacity: 0.8;
+}
+
+mat-chip-row .mat-chip-remove:hover {
+  opacity: 1;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+.mat-mdc-form-field-bottom-align::before {
+  display: none;
+}

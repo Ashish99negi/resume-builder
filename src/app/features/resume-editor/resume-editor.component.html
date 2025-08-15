@@ -1,34 +1,13 @@
-<!-- ROOT CONTAINER -->
 <div class="resume-editor-container flex h-screen">
-
-  <!-- SIDEBAR -->
   <div class="w-60 min-h-full bg-[#212d59] text-white flex flex-col border-r border-gray-300">
-
-    <!-- HEADER -->
-    <!-- <div class="text-xl font-bold text-center py-6 border-b border-white">
-      Resume Builder
-    </div> -->
-
     <div class="flex justify-center items-center mt-4">
-    <!-- Option 1: Using image icon -->
-    <img src="https://www.svgrepo.com/show/447612/edit-file.svg" alt="File Icon" class="w-14 h-14 filter invert" />
-    
-
-    <!-- Option 2: Using Material Icon -->
-    <!-- <mat-icon>description</mat-icon> -->
-  </div>
-  <div class="text-xl font-bold text-center py-4  border-white">
+      <img src="https://www.svgrepo.com/show/447612/edit-file.svg" alt="File Icon" class="w-14 h-14 filter invert" />
+    </div>
+    <div class="text-xl font-bold text-center py-4  border-white">
       Resume Builder
     </div>
-
-    <!-- STEPPER (slightly pushed upward) -->
-    <div class="flex-1 flex items-start justify-center pt-8"> <!-- pt-8 pushes down slightly -->
-      <mat-vertical-stepper
-        #stepper
-        linear
-        orientation="vertical"
-        class="w-full px-4 custom-stepper"
-      >
+    <div class="flex-1 flex items-start justify-center pt-8">
+      <mat-vertical-stepper #stepper linear orientation="vertical" class="w-full px-4 custom-stepper">
         <mat-step label="Personal Info">
           <ng-template matStepLabel>Personal Info</ng-template>
         </mat-step>
@@ -44,46 +23,31 @@
         <mat-step label="Summary">
           <ng-template matStepLabel>Summary</ng-template>
         </mat-step>
-        <mat-step label="Finalize">
-          <ng-template matStepLabel>Finalize</ng-template>
-        </mat-step>
       </mat-vertical-stepper>
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="step-content flex flex-col justify-between flex-1 max-w-3xl p-6 min-h-full overflow-y-auto">
-    <!-- Dynamic Content -->
+  <div class="step-content flex flex-col justify-between flex-1 min-h-full overflow-y-auto">
     <div class="flex-1 overflow-auto p-4">
-      <ng-container [ngSwitch]="stepper.selectedIndex">
-        <app-personal-info *ngSwitchCase="0"></app-personal-info>
-        <app-experience *ngSwitchCase="1"></app-experience>
-        <app-education *ngSwitchCase="2"></app-education>
-        <app-skills *ngSwitchCase="3"></app-skills>
+      <ng-container *ngIf="stepper">
+        <ng-container [ngSwitch]="stepper.selectedIndex">
+          <app-personal-info *ngSwitchCase="0"></app-personal-info>
+          <app-experience *ngSwitchCase="1"></app-experience>
+          <app-skills *ngSwitchCase="2"></app-skills>
+          <app-education *ngSwitchCase="3"></app-education>
+          <app-summary *ngSwitchCase="4"></app-summary>
+        </ng-container>
       </ng-container>
     </div>
 
-    <!-- Bottom Buttons -->
-    <div class="mt-6 flex justify-between">
-      <button
-        matButton
-        (click)="stepper.previous()"
-        [disabled]="stepper.selectedIndex === 0"
-        class="rounded-full border-2 border-black text-black font-bold px-6 py-2 hover:bg-gray-100 transition"
-      >
+    <div class="mt-6 flex justify-between" *ngIf="stepper">
+      <button matButton (click)="onBack()" [disabled]="stepper.selectedIndex === 0"
+        class="rounded-full border-2 border-black text-black font-bold px-6 py-2 hover:bg-gray-100 transition">
         Back
       </button>
-      <button
-        matButton
-        (click)="stepper.next()"
-        [disabled]="stepper.selectedIndex === 3"
-        class="rounded-full bg-blue-600 text-white font-bold px-6 py-2 hover:bg-blue-700 transition"
-      >
+      <button matButton (click)="onContinue()" [disabled]="stepper.selectedIndex === 5"
+        class="rounded-full bg-blue-600 text-white font-bold px-6 py-2 hover:bg-blue-700 transition">
         Continue
       </button>
     </div>
   </div>
-
-  <!-- PREVIEW PANE -->
-  <div class="preview-pane w-96 border-l border-gray-300 p-6 overflow-y-auto"></div>
-</div>

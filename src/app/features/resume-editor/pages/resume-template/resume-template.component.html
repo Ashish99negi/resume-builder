@@ -1,0 +1,48 @@
+<div #resumeContent class="resume-container p-6 bg-white shadow-lg">
+  <header *ngIf="resumeData?.personalInfo">
+    <h1 class="text-3xl font-bold text-center">{{ resumeData.personalInfo.firstName }} {{ resumeData.personalInfo.lastName }}</h1>
+    <div class="text-center text-sm text-gray-700 mt-2">
+      <span>{{ resumeData.personalInfo.email }}</span> |
+      <span>{{ resumeData.personalInfo.phone }}</span> |
+      <span>{{ resumeData.personalInfo.city }}, {{ resumeData.personalInfo.country }}</span>
+    </div>
+  </header>
+
+  <section *ngIf="resumeData?.summary?.summary" class="mt-6">
+    <h2 class="text-xl font-bold border-b-2 border-gray-400 pb-1">Professional Summary</h2>
+    <div class="prose prose-sm mt-2" [innerHTML]="resumeData.summary.summary"></div>
+  </section>
+
+  <section *ngIf="resumeData?.skills?.length > 0" class="mt-6">
+    <h2 class="text-xl font-bold border-b-2 border-gray-400 pb-1">Skills</h2>
+    <ul class="flex flex-wrap gap-2 mt-2">
+      <li *ngFor="let skill of resumeData.skills" class="bg-gray-200 text-gray-800 text-xs px-2 py-2 rounded">
+        {{ skill.name }}
+      </li>
+    </ul>
+  </section>
+
+  <section *ngIf="resumeData?.experience?.length > 0" class="mt-6">
+    <h2 class="text-xl font-bold border-b-2 border-gray-400 pb-1">Experience</h2>
+    <div *ngFor="let exp of resumeData.experience" class="mt-4">
+      <div class="flex justify-between items-baseline">
+        <h3 class="text-lg font-semibold">{{ exp.jobTitle }} at {{ exp.employer }}</h3>
+        <span class="text-sm text-gray-600">{{ exp.startDate | date: 'MMM yyyy' }} - {{ exp.endDate | date: 'MMM yyyy' }}</span>
+      </div>
+      <p class="text-sm text-gray-700">{{ exp.city }}, {{ exp.country }}</p>
+      <div class="prose prose-sm mt-2" [innerHTML]="exp.description"></div>
+    </div>
+  </section>
+
+  <section *ngIf="resumeData?.educations?.length > 0" class="mt-6">
+    <h2 class="text-xl font-bold border-b-2 border-gray-400 pb-1">Education</h2>
+    <div *ngFor="let edu of resumeData.educations" class="mt-4">
+      <div class="flex justify-between items-baseline">
+        <h3 class="text-lg font-semibold">{{ edu.school }}</h3>
+        <span class="text-sm text-gray-600">{{ edu.startDate | date: 'MMM yyyy' }} - {{ edu.endDate | date: 'MMM yyyy' }}</span>
+      </div>
+      <p class="text-sm text-gray-700">{{ edu.degree }} in {{ edu.fieldOfStudy }}</p>
+      <p class="text-sm text-gray-700">{{ edu.city }}, {{ edu.country }}</p>
+    </div>
+  </section>
+</div>

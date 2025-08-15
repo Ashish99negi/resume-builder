@@ -1,1 +1,30 @@
-<p>skills works!</p>
+<div class="flex flex-col h-[36rem] justify-center items-center">
+    <div class="mb-10">
+        <h2 class="text-3xl font-bold text-black mb-2">Add Your Skills</h2>
+    </div>
+
+    <div class="space-y-8 w-full">
+        <div class="w-full">
+            <!-- <label class="block text-lg font-semibold text-gray-800 mb-2 uppercase">Add Skills</label> -->
+            <mat-form-field appearance="outline" class="w-full">
+                <!-- <mat-label>Start typing to add a skill...</mat-label> -->
+                <mat-chip-grid #chipList aria-label="Skills selection">
+                    <mat-chip-row *ngFor="let skill of skills" (removed)="remove(skill)">
+                        {{ skill.name }}
+                        <button matChipRemove [attr.aria-label]="'remove ' + skill.name">
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip-row>
+                    <input [formControl]="skillInput" [matChipInputFor]="chipList" [matAutocomplete]="auto"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)"
+                        #skillInputRef />
+                </mat-chip-grid>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                    <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                        {{ skill }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="h-screen flex flex-col justify-center items-center p-8">
+
+    <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold">Your Resume is Ready!</h1>
+        <p class="text-gray-600 mt-2">Preview your resume below and download it when you're ready.</p>
+
+        <div class="flex justify-center gap-4 mt-4">
+             <button (click)="goToPreviousPage()" mat-raised-button color="secondary">
+                Back
+            </button>
+            <button (click)="downloadPdf()" mat-raised-button color="primary">
+                Download PDF
+            </button>
+            <button (click)="createAnother()" mat-stroked-button color="accent">
+                Create Another
+            </button>
+        </div>
+    </div>
+
+
+    <div class="w-full h-full border-2 border-gray-300 rounded-lg overflow-hidden flex justify-center items-center">
+        <div *ngIf="pdfUrl; else loading" class="w-full h-full">
+            <iframe [src]="pdfUrl" class="w-full h-full border-none"></iframe>
+        </div>
+        <ng-template #loading>
+            <p>Generating PDF preview...</p>
+        </ng-template>
+    </div>
+
+    <div style="position: absolute; left: -9999px;">
+        <app-resume-template></app-resume-template>
+    </div>
+</div>
